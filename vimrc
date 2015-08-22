@@ -57,6 +57,11 @@ set fillchars+=stl:\ ,stlnc:\
 
 map <C-n> :NERDTreeToggle<CR>
 "Indentation
+" by default, the indent is 2 spaces. 
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
+"Indentation for WebDevelopment
 autocmd FileType javascript,html,css,php set ai
 autocmd FileType javascript,html,css,php set sw=2
 autocmd FileType javascript,html,css,php set ts=2
