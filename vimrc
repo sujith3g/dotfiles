@@ -26,7 +26,6 @@ Plugin 'scrooloose/nerdtree'
 "set term=xterm-256color
 "set termencoding=utf-8
 
-
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -40,6 +39,7 @@ filetype plugin indent on    " required
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 "
 " see :h vundle for more details or wiki for FAQ
+
 " Put your non-Plugin stuff after this line
 set t_Co=256
 syntax on " Enable syntax highlighting
@@ -47,6 +47,7 @@ set background=dark " Set dark background
 colorscheme onedark " Set color scheme
 set nu " Enable line numbers
 set backspace=indent,eol,start
+set cursorline "highlight currentline
 
 " My PowerLine Configs
 source /usr/local/lib/python2.7/site-packages/powerline/bindings/vim/plugin/powerline.vim
@@ -54,8 +55,9 @@ set laststatus=2
 let g:Powerline_symbols = 'fancy'
 set fillchars+=stl:\ ,stlnc:\
 
-
+" My NerdTree shortcut
 map <C-n> :NERDTreeToggle<CR>
+
 "Indentation
 " by default, the indent is 2 spaces. 
 set shiftwidth=2
@@ -68,3 +70,13 @@ autocmd FileType javascript,html,css,php set ts=2
 autocmd FileType javascript,html,css,php set sts=2
 autocmd FileType javascript,css,php set textwidth=79
 
+"Disable Arrow keys
+no <down> <Nop>
+no <left> <Nop>
+no <right> <Nop>
+no <up> <Nop>
+
+ino <down> <Nop>
+ino <left> <Nop>
+ino <right> <Nop>
+ino <up> <Nop>
