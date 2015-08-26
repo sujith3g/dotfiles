@@ -13,8 +13,8 @@ Plugin 'gmarik/Vundle.vim'
 " For javascript
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'scrooloose/nerdtree'
-"Plugin 'powerline/powerline'
-
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 " Powerline Configurations
 " Always show statusline
 "set laststatus=2 
@@ -42,7 +42,7 @@ filetype plugin indent on    " required
 
 " Put your non-Plugin stuff after this line
 set t_Co=256
-syntax on " Enable syntax highlighting
+syntax enable " Enable syntax highlighting
 set background=dark " Set dark background
 colorscheme onedark " Set color scheme
 set nu " Enable line numbers
@@ -69,6 +69,9 @@ autocmd FileType javascript,html,css,php set sw=2
 autocmd FileType javascript,html,css,php set ts=2
 autocmd FileType javascript,html,css,php set sts=2
 autocmd FileType javascript,css,php set textwidth=79
+
+" for markdown file syntax highlighting
+au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 
 "Disable Arrow keys
 no <down> <Nop>
