@@ -40,7 +40,7 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 
-" Put your non-Plugin stuff after this line
+" Put your non-Plugin stuff after self line
 set t_Co=256
 syntax enable " Enable syntax highlighting
 set background=dark " Set dark background
@@ -72,6 +72,12 @@ autocmd FileType javascript,css,php set textwidth=79
 
 " for markdown file syntax highlighting
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
+autocmd FileType markdown set ai formatoptions=tcroqn2 comments=n:>
+
+" space open/closes folds
+nnoremap <space> za
+" shift+Enter for newline without entering insert-mode
+nmap <CR> o<Esc>
 
 "Disable Arrow keys
 no <down> <Nop>
