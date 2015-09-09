@@ -15,16 +15,7 @@ Plugin 'jelera/vim-javascript-syntax'
 Plugin 'scrooloose/nerdtree'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
-" Powerline Configurations
-" Always show statusline
-"set laststatus=2 
-"let g:Powerline_symbols = 'unicode'
-"set guifont=Inconsolata\ for\ Powerline:h15
-"let g:Powerline_symbols = 'fancy'
-"set encoding=utf-8
-"set fillchars+=stl:\ ,stlnc:\
-"set term=xterm-256color
-"set termencoding=utf-8
+Plugin 'matchit.zip'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -55,8 +46,9 @@ set laststatus=2
 let g:Powerline_symbols = 'fancy'
 set fillchars+=stl:\ ,stlnc:\
 
-" My NerdTree shortcut
-map <C-n> :NERDTreeToggle<CR>
+" For ctrlp plugin
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+
 
 "Indentation
 " by default, the indent is 2 spaces. 
@@ -74,10 +66,32 @@ autocmd FileType javascript,css,php set textwidth=79
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 autocmd FileType markdown set ai formatoptions=tcroqn2 comments=n:>
 
+" Set Leader key as comma
+let mapleader = ","
+
+"""""""""""""""""""""""""""""""""""""""
+"          Key Maps										" 
+"""""""""""""""""""""""""""""""""""""""
 " space open/closes folds
 nnoremap <space> za
-" shift+Enter for newline without entering insert-mode
+" <Enter> for newline without entering insert-mode
 nmap <CR> o<Esc>
+
+" My NerdTree shortcut
+map <C-n> :NERDTreeToggle<CR>
+
+" Tab movements
+nnoremap <leader>m :tabn<CR>
+nnoremap <leader>n :tabp<CR>
+
+" For listing buffers
+nnoremap <leader>b :buffers<CR>
+
+" Splits tweaks {{{
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
 
 "Disable Arrow keys
 no <down> <Nop>
