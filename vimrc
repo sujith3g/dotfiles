@@ -16,6 +16,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'matchit.zip'
+Plugin 'tpope/vim-fugitive'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -39,6 +40,8 @@ colorscheme onedark " Set color scheme
 set nu " Enable line numbers
 set backspace=indent,eol,start
 set cursorline "highlight currentline
+" For hiding modified buffers without warning message
+set hidden
 
 " My PowerLine Configs
 source /usr/local/lib/python2.7/site-packages/powerline/bindings/vim/plugin/powerline.vim
@@ -69,6 +72,12 @@ autocmd FileType markdown set ai formatoptions=tcroqn2 comments=n:>
 " Set Leader key as comma
 let mapleader = ","
 
+" Allow us to use Ctrl-s and Ctrl-q as keybinds
+silent !stty -ixon
+
+" Restore default behaviour when leaving Vim.
+autocmd VimLeave * silent !stty ixon
+
 """""""""""""""""""""""""""""""""""""""
 "          Key Maps										" 
 """""""""""""""""""""""""""""""""""""""
@@ -79,6 +88,11 @@ nmap <CR> o<Esc>
 
 " My NerdTree shortcut
 map <C-n> :NERDTreeToggle<CR>
+
+" Keymaps for saving using ctrl+s
+noremap <silent> <C-S> :update<CR>
+vnoremap <silent> <C-S> <C-C>:update<CR>
+inoremap <silent> <C-S> <C-O>:update<CR>
 
 " Tab movements
 nnoremap <leader>m :tabn<CR>
@@ -103,3 +117,7 @@ ino <down> <Nop>
 ino <left> <Nop>
 ino <right> <Nop>
 ino <up> <Nop>
+"""""""""""""""""""""""""""""""""""""""
+"          End-of Key Maps						" 
+"""""""""""""""""""""""""""""""""""""""
+
