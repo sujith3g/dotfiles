@@ -17,6 +17,7 @@ Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'matchit.zip'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -52,12 +53,17 @@ set fillchars+=stl:\ ,stlnc:\
 " For ctrlp plugin
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
+" For showing tabs,newlines,trailing-white-spaces,etc.
+set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<
+set list
 
 "Indentation
-" by default, the indent is 2 spaces. 
+" by default, the indent is 2 spaces.
 set shiftwidth=2
 set softtabstop=2
 set tabstop=2
+set expandtab
+
 "Indentation for WebDevelopment
 autocmd FileType javascript,html,css,php set ai
 autocmd FileType javascript,html,css,php set sw=2
@@ -79,7 +85,7 @@ silent !stty -ixon
 autocmd VimLeave * silent !stty ixon
 
 """""""""""""""""""""""""""""""""""""""
-"          Key Maps										" 
+"          Key Maps                   "
 """""""""""""""""""""""""""""""""""""""
 " space open/closes folds
 nnoremap <space> za
@@ -92,7 +98,7 @@ map <C-n> :NERDTreeToggle<CR>
 " Keymaps for saving using ctrl+s
 noremap <silent> <C-S> :update<CR>
 vnoremap <silent> <C-S> <C-C>:update<CR>
-inoremap <silent> <C-S> <C-O>:update<CR>
+inoremap <silent> <C-S> <C-O>:update<CR><C-C>
 
 " Tab movements
 nnoremap <leader>m :tabn<CR>
@@ -118,6 +124,6 @@ ino <left> <Nop>
 ino <right> <Nop>
 ino <up> <Nop>
 """""""""""""""""""""""""""""""""""""""
-"          End-of Key Maps						" 
+"          End-of Key Maps            "
 """""""""""""""""""""""""""""""""""""""
 
