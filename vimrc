@@ -11,13 +11,15 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 " For javascript
-Plugin 'jelera/vim-javascript-syntax'
 Plugin 'scrooloose/nerdtree'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'matchit.zip'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
+Plugin 'pangloss/vim-javascript'
+" vim-orgmode - Text outlining and task management for Vim
+Plugin 'jceb/vim-orgmode'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -64,6 +66,9 @@ set softtabstop=2
 set tabstop=2
 set expandtab
 
+" For folding 
+set foldmethod=indent
+
 "Indentation for WebDevelopment
 autocmd FileType javascript,html,css,php set ai
 autocmd FileType javascript,html,css,php set sw=2
@@ -88,12 +93,16 @@ autocmd VimLeave * silent !stty ixon
 "          Key Maps                   "
 """""""""""""""""""""""""""""""""""""""
 " space open/closes folds
-nnoremap <space> za
+autocmd FileType markdown nnoremap <space> za
+autocmd FileType javascript nnoremap <space> za
 " <Enter> for newline without entering insert-mode
 nmap <CR> o<Esc>
 
 " My NerdTree shortcut
 map <C-n> :NERDTreeToggle<CR>
+
+" <F3> For enable/disable relativenumber
+noremap <F3> :exec &nu==&rnu? "se nu!" : "se rnu!"<CR>
 
 " Keymaps for saving using ctrl+s
 noremap <silent> <C-S> :update<CR>
@@ -106,6 +115,9 @@ nnoremap <leader>n :tabp<CR>
 
 " For listing buffers
 nnoremap <leader>b :buffers<CR>
+
+" For recursive unfolding
+noremap <leader><space> zO
 
 " Splits tweaks {{{
 map <C-h> <C-w>h
