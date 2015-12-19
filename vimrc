@@ -18,8 +18,16 @@ Plugin 'matchit.zip'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'pangloss/vim-javascript'
+" for html-js indentation
+Plugin 'vim-scripts/JavaScript-Indent'
+" YouCompleteMe for autocompletion
+Plugin 'Valloric/YouCompleteMe'
+" tern for JS support in YouCompleteMe
+Plugin 'marijnh/tern_for_vim'
 " vim-orgmode - Text outlining and task management for Vim
 Plugin 'jceb/vim-orgmode'
+" speeddating - For date/timestamp manipulation, reqd for vim-rgmode.
+Plugin 'tpope/vim-speeddating'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -54,6 +62,8 @@ set fillchars+=stl:\ ,stlnc:\
 
 " For ctrlp plugin
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+" For ctrlp to search hidden files
+let g:ctrlp_show_hidden = 1
 
 " For showing tabs,newlines,trailing-white-spaces,etc.
 set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<
@@ -82,12 +92,26 @@ autocmd FileType markdown set ai formatoptions=tcroqn2 comments=n:>
 
 " Set Leader key as comma
 let mapleader = ","
+" Set LocalLeader key as ';'
+let maplocalleader = ";"
 
 " Allow us to use Ctrl-s and Ctrl-q as keybinds
 silent !stty -ixon
 
 " Restore default behaviour when leaving Vim.
 autocmd VimLeave * silent !stty ixon
+"          Functions
+""""""""""""""""""""""""""""""""""""""
+function! UnderlineHeading(level)
+  if a:level == 1
+    normal! yypVr=
+  elseif a:level == 2
+    normal! yypVr-
+  else 
+    normal! I### 
+  endif
+endfunction
+
 
 """""""""""""""""""""""""""""""""""""""
 "          Key Maps                   "
@@ -100,6 +124,13 @@ nmap <CR> o<Esc>
 
 " My NerdTree shortcut
 map <C-n> :NERDTreeToggle<CR>
+" Show hidden files in NerdTree by default
+let g:NERDTreeShowHidden=1
+
+" For underline markdown headings
+nnoremap <leader>u1 :call UnderlineHeading(1)<CR>
+nnoremap <leader>u2 :call UnderlineHeading(2)<CR>
+nnoremap <leader>u3 :call UnderlineHeading(3)<CR>
 
 " <F3> For enable/disable relativenumber
 noremap <F3> :exec &nu==&rnu? "se nu!" : "se rnu!"<CR>
@@ -109,10 +140,15 @@ noremap <silent> <C-S> :update<CR>
 vnoremap <silent> <C-S> <C-C>:update<CR>
 inoremap <silent> <C-S> <C-O>:update<CR><C-C>
 
+" Map jk to <Esc> from insert mode.
+imap jk <Esc>
+
 " Tab movements
 nnoremap <leader>m :tabn<CR>
 nnoremap <leader>n :tabp<CR>
 
+" List buffers using CtrlPBuufers
+nnoremap <leader>p :CtrlPBuffer<CR>
 " For listing buffers
 nnoremap <leader>b :buffers<CR>
 
