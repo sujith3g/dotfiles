@@ -28,6 +28,16 @@ Plugin 'marijnh/tern_for_vim'
 Plugin 'jceb/vim-orgmode'
 " speeddating - For date/timestamp manipulation, reqd for vim-rgmode.
 Plugin 'tpope/vim-speeddating'
+" ag plugin for searching across files/folders using ag
+Plugin 'rking/ag.vim'
+" gundo plugin for visualize vim undo tree.
+Plugin 'sjl/gundo.vim'
+" Plugin for json indent
+Plugin 'elzr/vim-json'
+" Vim-shell, shell in vim :)
+Plugin 'Shougo/vimshell.vim'
+" vimshell dependency
+Plugin 'Shougo/vimproc.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -53,17 +63,57 @@ set backspace=indent,eol,start
 set cursorline "highlight currentline
 " For hiding modified buffers without warning message
 set hidden
+"To disable log from javascript-indent, ~/.vim/indent/javascript.vim
+let g:js_indent_log = 0
 
+"""""""""""""""""""""""""""
+"    Powerline configs    "
+"""""""""""""""""""""""""""
 " My PowerLine Configs
 source /usr/local/lib/python2.7/site-packages/powerline/bindings/vim/plugin/powerline.vim
 set laststatus=2
 let g:Powerline_symbols = 'fancy'
 set fillchars+=stl:\ ,stlnc:\
+"""""""""""""""""""""""""""
 
+"for keeping swap files in separate directory
+set directory=~/.vim_tmp/swap
+"for keeping undo in separate directory
+set undodir=~/.vim_tmp/undo_dir
+
+"""""""""""""""""""""""""
+"    gundo configs      "
+"""""""""""""""""""""""""
+let g:gundo_width = 40
+let g:gundo_preview_height = 40
+let g:gundo_right = 0  " keep gundo_preview left-side 
+nnoremap <F5> :GundoToggle<CR>
+"""""""""""""""""""""""""
+
+"""""""""""""""""""""""""
+"    vimshell configs   "
+"""""""""""""""""""""""""
+let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
+let g:vimshell_prompt =  '$ '
+" open new splits actually in new tab
+let g:vimshell_split_command = "tabnew"
+let g:vimshell_editor_command = "mvim"
+if has("gui_running")
+  let g:vimshell_editor_command = "mvim"
+endif
+"""""""""""""""""""""""""
+
+"""""""""""""""""""""""""
+"    ctrlp configs      "
+"""""""""""""""""""""""""
 " For ctrlp plugin
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 " For ctrlp to search hidden files
 let g:ctrlp_show_hidden = 1
+"""""""""""""""""""""""""
+
+" For ag Plugin integration
+let g:ackprg = 'ag --vimgrep'
 
 " For showing tabs,newlines,trailing-white-spaces,etc.
 set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<
@@ -100,7 +150,9 @@ silent !stty -ixon
 
 " Restore default behaviour when leaving Vim.
 autocmd VimLeave * silent !stty ixon
-"          Functions
+
+""""""""""""""""""""""""""""""""""""""
+"          Functions                 "
 """"""""""""""""""""""""""""""""""""""
 function! UnderlineHeading(level)
   if a:level == 1
@@ -111,7 +163,7 @@ function! UnderlineHeading(level)
     normal! I### 
   endif
 endfunction
-
+"""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""
 "          Key Maps                   "
@@ -131,6 +183,18 @@ let g:NERDTreeShowHidden=1
 nnoremap <leader>u1 :call UnderlineHeading(1)<CR>
 nnoremap <leader>u2 :call UnderlineHeading(2)<CR>
 nnoremap <leader>u3 :call UnderlineHeading(3)<CR>
+
+" for toggling spell checking
+nmap <silent><leader>s :set spell!<CR>
+"set spell check language as British English
+set spelllang=en_gb
+
+" Bubble single lines
+"nmap <C-up> ddkP
+"nmap <C-down> ddp
+" Bubble multiple lines
+"vmap <C-Up> xkP`[V`]
+"vmap <C-Down> xp`[V`]
 
 " <F3> For enable/disable relativenumber
 noremap <F3> :exec &nu==&rnu? "se nu!" : "se rnu!"<CR>
