@@ -38,6 +38,14 @@ Plugin 'elzr/vim-json'
 Plugin 'Shougo/vimshell.vim'
 " vimshell dependency
 Plugin 'Shougo/vimproc.vim'
+" commentry for commenting
+Plugin 'tpope/vim-commentary'
+" solarized color-scheme
+Plugin 'altercation/vim-colors-solarized'
+" DelimitMate for ",',).. auto closing
+Plugin 'Raimondi/delimitMate'
+" for closing mark-up tags
+Plugin 'alvan/vim-closetag'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -57,7 +65,7 @@ filetype plugin indent on    " required
 set t_Co=256
 syntax enable " Enable syntax highlighting
 set background=dark " Set dark background
-colorscheme onedark " Set color scheme
+colorscheme solarized " Set color scheme
 set nu " Enable line numbers
 set backspace=indent,eol,start
 set cursorline "highlight currentline
@@ -125,6 +133,10 @@ set shiftwidth=2
 set softtabstop=2
 set tabstop=2
 set expandtab
+
+" reselect visual block after indent/outdent
+vnoremap < <gv
+vnoremap > >gv
 
 " For folding 
 set foldmethod=indent
@@ -215,6 +227,9 @@ nnoremap <leader>n :tabp<CR>
 nnoremap <leader>p :CtrlPBuffer<CR>
 " For listing buffers
 nnoremap <leader>b :buffers<CR>
+
+" Semicolon is just colon
+nnoremap ; :
 
 " For recursive unfolding
 noremap <leader><space> zO
