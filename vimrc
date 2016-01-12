@@ -123,6 +123,9 @@ let g:ctrlp_show_hidden = 1
 " For ag Plugin integration
 let g:ackprg = 'ag --vimgrep'
 
+"To disable documentation for tern_for_vim in top split window
+set completeopt-=preview
+
 " For showing tabs,newlines,trailing-white-spaces,etc.
 set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<
 set list
