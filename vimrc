@@ -38,6 +38,8 @@ Plugin 'elzr/vim-json'
 Plugin 'Shougo/vimshell.vim'
 " vimshell dependency
 Plugin 'Shougo/vimproc.vim'
+" vimshell dependancy
+Plugin 'Shougo/unite.vim'
 " commentry for commenting
 Plugin 'tpope/vim-commentary'
 " solarized color-scheme
@@ -46,6 +48,8 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'Raimondi/delimitMate'
 " for closing mark-up tags
 Plugin 'alvan/vim-closetag'
+" for close all but current buffer.
+Plugin 'BufOnly.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -244,10 +248,11 @@ map <C-k> <C-w>k
 map <C-l> <C-w>l
 
 "Disable Arrow keys
-no <down> <Nop>
+" Bubble single lines
+no <down> ddp
+no <up> ddkP
 no <left> <Nop>
 no <right> <Nop>
-no <up> <Nop>
 
 ino <down> <Nop>
 ino <left> <Nop>
