@@ -53,6 +53,10 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'alvan/vim-closetag'
 " for close all but current buffer.
 Plugin 'BufOnly.vim'
+" for html,js,css beautify
+Plugin 'maksimr/vim-jsbeautify'
+" for html,js,css beautify
+Plugin 'einars/js-beautify'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -217,6 +221,13 @@ let g:NERDTreeShowHidden=1
 nnoremap <leader>u1 :call UnderlineHeading(1)<CR>
 nnoremap <leader>u2 :call UnderlineHeading(2)<CR>
 nnoremap <leader>u3 :call UnderlineHeading(3)<CR>
+
+" for html,js,css beautify
+autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
+" for html
+autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
+" for css or scss
+autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 
 " for toggling spell checking
 nmap <silent><leader>s :set spell!<CR>
