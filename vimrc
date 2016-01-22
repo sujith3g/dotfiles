@@ -10,13 +10,16 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
-" For javascript
+" For file explorer in sublime/textmate.
 Plugin 'scrooloose/nerdtree'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
+" Goto matching {,(,",', or html-tag using % key.
 Plugin 'matchit.zip'
 Plugin 'tpope/vim-fugitive'
+" For surrounding text with "",'',{},(),etc.
 Plugin 'tpope/vim-surround'
+" Javascript indentation and syntax support
 Plugin 'pangloss/vim-javascript'
 " for html-js indentation
 Plugin 'vim-scripts/JavaScript-Indent'
@@ -122,6 +125,18 @@ endif
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 " For ctrlp to search hidden files
 let g:ctrlp_show_hidden = 1
+"""""""""""""""""""""""""
+
+"""""""""""""""""""""""""
+"     Fileheader        "
+"""""""""""""""""""""""""
+autocmd bufnewfile *.js so ~/.vim/header_template/js.txt
+autocmd bufnewfile *.js exe "1," . 6 . "g/File Name :.*/s//File Name : " .expand("%")
+autocmd bufnewfile *.js exe "1," . 6 . "g/Created :.*/s//Created : " .strftime("%d-%m-%Y")
+autocmd bufnewfile *.js exe "1," . 6 . "g/Author :.*/s//Author : " .$USER. " <sujith3g@gmail.com>"
+autocmd Bufwritepre,filewritepre *.js execute "normal ma"
+autocmd Bufwritepre,filewritepre *.js exe "1," . 6 . "g/Last Modified :.*/s//Last Modified : " .strftime("%c")
+autocmd bufwritepost,filewritepost *.js execute "normal `a"
 """""""""""""""""""""""""
 
 " For ag Plugin integration
