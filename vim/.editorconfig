@@ -10,10 +10,12 @@ path=~/.vim/bundle/js-beautify/js/lib/beautify.js
 bin=node
 indent_style = space
 indent_size = 2
+brace_style = end-expand
 
 [**.json]
 indent_style = space
 indent_size = 2
+brace_style = end-expand
 
 [**.jsx]
 e4x = true
@@ -34,4 +36,5 @@ indent_size = 2
 indent_style = space
 indent_size = 2
 max_char = 78
-brace_style = expand
+brace_style = end-expand
+

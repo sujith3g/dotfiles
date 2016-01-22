@@ -19,6 +19,8 @@ Plugin 'matchit.zip'
 Plugin 'tpope/vim-fugitive'
 " For surrounding text with "",'',{},(),etc.
 Plugin 'tpope/vim-surround'
+" For fuzzy search using CtrlP
+Plugin 'kien/ctrlp.vim'
 " Javascript indentation and syntax support
 Plugin 'pangloss/vim-javascript'
 " for html-js indentation
@@ -49,8 +51,6 @@ Plugin 'tpope/vim-commentary'
 Plugin 'altercation/vim-colors-solarized'
 " DelimitMate for ",',).. auto closing
 Plugin 'Raimondi/delimitMate'
-" for closing mark-up tags
-Plugin 'alvan/vim-closetag'
 " for close all but current buffer.
 Plugin 'BufOnly.vim'
 " for html,js,css beautify
