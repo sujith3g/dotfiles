@@ -59,6 +59,8 @@ Plugin 'maksimr/vim-jsbeautify'
 Plugin 'einars/js-beautify'
 " autoheader for FileHeader/Template
 Plugin 'shanzi/autoHEADER'
+" for displaying, toggle marks.
+Plugin 'kshenoy/vim-signature'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
