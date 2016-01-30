@@ -61,6 +61,8 @@ Plugin 'einars/js-beautify'
 Plugin 'shanzi/autoHEADER'
 " for displaying, toggle marks.
 Plugin 'kshenoy/vim-signature'
+" Plugin for moving between tmux splits and vim splits
+Bundle 'christoomey/vim-tmux-navigator'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
