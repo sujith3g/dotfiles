@@ -57,6 +57,8 @@ Plugin 'BufOnly.vim'
 Plugin 'maksimr/vim-jsbeautify'
 " for html,js,css beautify
 Plugin 'einars/js-beautify'
+" autoheader for FileHeader/Template
+Plugin 'shanzi/autoHEADER'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -134,13 +136,9 @@ let g:ctrlp_show_hidden = 1
 """""""""""""""""""""""""
 "     Fileheader        "
 """""""""""""""""""""""""
-autocmd bufnewfile *.js so ~/.vim/header_template/js.txt
-autocmd bufnewfile *.js exe "1," . 6 . "g/File Name :.*/s//File Name : " .expand("%")
-autocmd bufnewfile *.js exe "1," . 6 . "g/Created :.*/s//Created : " .strftime("%d-%m-%Y")
-autocmd bufnewfile *.js exe "1," . 6 . "g/Author :.*/s//Author : " .$USER. " <sujith3g@gmail.com>"
-autocmd Bufwritepre,filewritepre *.js execute "normal ma"
-autocmd Bufwritepre,filewritepre *.js exe "1," . 6 . "g/Last Modified :.*/s//Last Modified : " .strftime("%c")
-autocmd bufwritepost,filewritepost *.js execute "normal `a"
+let g:autoHEADER_auto_enable = 0
+let g:autoHEADER_fill_char_repeat = 70
+let g:autoHEADER_default_author = "sujith <sujith3g(at)gmail(dot)com>"
 """""""""""""""""""""""""
 
 " For ag Plugin integration
@@ -172,7 +170,11 @@ autocmd FileType javascript,html,css,php set ai
 autocmd FileType javascript,html,css,php set sw=2
 autocmd FileType javascript,html,css,php set ts=2
 autocmd FileType javascript,html,css,php set sts=2
-autocmd FileType javascript,css,php set textwidth=79
+"" For highlighting 79th char to show Long lines
+augroup vimrc_autocmds
+  autocmd BufEnter * highlight OverLength ctermbg=DarkGray guibg=#592929
+  autocmd BufEnter * match OverLength /\%79v./
+augroup END
 
 " for markdown file syntax highlighting
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
