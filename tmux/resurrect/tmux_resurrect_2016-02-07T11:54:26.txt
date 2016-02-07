@@ -1,0 +1,15 @@
+pane	play	0	:bash	1	:*	0	:/Users/sujith/coding/git_repos/docxtemplater-chart-module	0	Vim	:/usr/local/Cellar/macvim/7.4-85/MacVim.app/Contents/MacOS/Vim .
+pane	play	0	:bash	1	:*	1	:/Users/sujith/coding/git_repos/docx-link-module	1	bash	:
+pane	play	0	:bash	1	:*	2	:/Users/sujith/coding/git_repos/docx-link-module	0	Vim	:/usr/local/Cellar/macvim/7.4-85/MacVim.app/Contents/MacOS/Vim .
+pane	play	1	:bash	0	:-	0	:/private/etc/apache2/extra	1	bash	:
+pane	play	1	:bash	0	:-	1	:/Users/sujith	0	bash	:
+pane	work	0	:bash	0	:-	0	:/Users/sujith/coding/meteor_apps/ipam	0	node	:/Users/sujith/.meteor/packages/meteor-tool/.1.1.10.18rf44v++os.osx.x86_64+web.browser+web.cordova/mt-os.osx.x86_64/dev_bundle/bin/node /Users/sujith/.meteor/packages/meteor-tool/.1.1.10.18rf44v++os.osx.x86_64+web.browser+web.cordova/mt-os.osx.x86_64/tools/index.js
+pane	work	0	:bash	0	:-	1	:/Users/sujith/coding/meteor_apps/ipam	1	bash	:
+pane	work	0	:bash	0	:-	2	:/Users/sujith/coding/meteor_apps/ipam	0	Vim	:/usr/local/Cellar/macvim/7.4-85/MacVim.app/Contents/MacOS/Vim .
+pane	work	1	:Vim	1	:*	0	:/private/var/www/test/php-smtp	0	bash	:
+pane	work	1	:Vim	1	:*	1	:/private/var/www/clex/application/controllers	1	Vim	:/usr/local/Cellar/macvim/7.4-85/MacVim.app/Contents/MacOS/Vim owa.php
+window	play	0	1	:*	3139,181x45,0,0{70x45,0,0[70x22,0,0,27,70x22,0,23,29],110x45,71,0,26}
+window	play	1	0	:-	7707,181x45,0,0{90x45,0,0,65,90x45,91,0,67}
+window	work	0	0	:-	bc9a,181x45,0,0{51x45,0,0[51x13,0,0,0,51x31,0,14,51],129x45,52,0,19}
+window	work	1	1	:*	78e0,181x45,0,0{80x45,0,0,68,100x45,81,0,69}
+state	play	work
