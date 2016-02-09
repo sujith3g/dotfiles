@@ -63,6 +63,8 @@ Plugin 'shanzi/autoHEADER'
 Plugin 'kshenoy/vim-signature'
 " Plugin for moving between tmux splits and vim splits
 Bundle 'christoomey/vim-tmux-navigator'
+" For ecmascript6 syntax-highlighting
+Plugin 'isRuslan/vim-es6'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -166,7 +168,7 @@ set expandtab
 vnoremap < <gv
 vnoremap > >gv
 
-" For folding 
+" For folding
 set foldmethod=indent
 
 "Indentation for WebDevelopment
