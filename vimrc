@@ -12,19 +12,30 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 " For file explorer in sublime/textmate.
 Plugin 'scrooloose/nerdtree'
+" Tabularize text using patterns/regex
 Plugin 'godlygeek/tabular'
+""""""""""""""""""""Syntax""""""""""""""""""""
+
+" Markdown syntax support for vim
 Plugin 'plasticboy/vim-markdown'
+" Javascript syntax support
+Plugin 'pangloss/vim-javascript'
+" Plugin for json indent
+Plugin 'elzr/vim-json'
+" For ecmascript6 syntax support
+Plugin 'isRuslan/vim-es6'
+" for html-js indentation
+Plugin 'vim-scripts/JavaScript-Indent'
+
+""""""""""""""""""End-of Syntax"""""""""""""""
 " Goto matching {,(,",', or html-tag using % key.
 Plugin 'matchit.zip'
+" Git wraper for vim
 Plugin 'tpope/vim-fugitive'
 " For surrounding text with "",'',{},(),etc.
 Plugin 'tpope/vim-surround'
 " For fuzzy search using CtrlP
 Plugin 'kien/ctrlp.vim'
-" Javascript indentation and syntax support
-Plugin 'pangloss/vim-javascript'
-" for html-js indentation
-Plugin 'vim-scripts/JavaScript-Indent'
 " YouCompleteMe for autocompletion
 Plugin 'Valloric/YouCompleteMe'
 " tern for JS support in YouCompleteMe
@@ -37,8 +48,6 @@ Plugin 'tpope/vim-speeddating'
 Plugin 'rking/ag.vim'
 " gundo plugin for visualize vim undo tree.
 Plugin 'sjl/gundo.vim'
-" Plugin for json indent
-Plugin 'elzr/vim-json'
 " Vim-shell, shell in vim :)
 Plugin 'Shougo/vimshell.vim'
 " vimshell dependency
@@ -63,8 +72,7 @@ Plugin 'shanzi/autoHEADER'
 Plugin 'kshenoy/vim-signature'
 " Plugin for moving between tmux splits and vim splits
 Bundle 'christoomey/vim-tmux-navigator'
-" For ecmascript6 syntax-highlighting
-Plugin 'isRuslan/vim-es6'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -169,7 +177,7 @@ vnoremap < <gv
 vnoremap > >gv
 
 " For folding
-set foldmethod=indent
+"set foldmethod=indent
 
 "Indentation for WebDevelopment
 autocmd FileType javascript,html,css,php set ai
@@ -189,7 +197,7 @@ autocmd FileType markdown set ai formatoptions=tcroqn2 comments=n:>
 " Set Leader key as comma
 let mapleader = ","
 " Set LocalLeader key as ';'
-let maplocalleader = ";"
+let maplocalleader = " "
 
 " Allow us to use Ctrl-s and Ctrl-q as keybinds
 silent !stty -ixon
@@ -270,7 +278,7 @@ nnoremap <leader>p :CtrlPBuffer<CR>
 nnoremap <leader>b :buffers<CR>
 
 " Semicolon is just colon
-nnoremap ; :
+" nnoremap ; :
 
 " For recursive unfolding
 noremap <leader><space> zO
