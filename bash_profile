@@ -2,10 +2,16 @@ export PATH="$HOME/.node/bin:$PATH"
 export PATH="$PATH:/Users/sujith/coding/android/sdk/android-sdk-macosx/platform-tools"
 export PATH="$PATH:/Users/sujith/coding/android/sdk/android-sdk-macosx/tools"
 export PATH="/usr/local/mysql/bin:$PATH"
+
+#append sensitive info from ~/.sensitive
+if [ -f ~/.sensitive ]; then
+  . ~/.sensitive
+fi
+
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
 fi
-export HOMEBREW_GITHUB_API_TOKEN=dcfcb1ad0ced0cae7ce1c5debfcd18984ee8a13e
+
 export USE_GLOBAL_ADK=t
 export POWERLINE_CONFIG_COMMAND=powerline-config
 ### =========== My Aliases =============== ###
