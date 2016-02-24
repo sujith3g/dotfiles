@@ -12,7 +12,10 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
 fi
 
+#for android
 export USE_GLOBAL_ADK=t
+export ANDROID_HOME="/Users/sujith/coding/android/sdk/android-sdk-macosx/"
+
 export POWERLINE_CONFIG_COMMAND=powerline-config
 ### =========== My Aliases =============== ###
 alias dcount="figlet $(ls ~/Downloads/ | wc -l)"
