@@ -54,6 +54,8 @@ Plugin 'Shougo/vimshell.vim'
 Plugin 'Shougo/vimproc.vim'
 " vimshell dependancy
 Plugin 'Shougo/unite.vim'
+" Vimfiler for unite, unite dependency
+Plugin 'Shougo/vimfiler.vim'
 " commentry for commenting
 Plugin 'tpope/vim-commentary'
 " solarized color-scheme
@@ -274,9 +276,18 @@ nnoremap <leader>n :tabp<CR>
 
 " List buffers using CtrlPBuufers
 nnoremap <leader>p :CtrlPBuffer<CR>
-" For listing buffers
-nnoremap <leader>b :buffers<CR>
+" File search using unite instead of ctrlp
+nnoremap <C-p> :Unite file_rec/async<cr>
 
+" Unite settings
+let g:unite_source_history_yank_enable = 1
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async:!<cr>
+nnoremap <leader>f :<C-u>Unite -no-split -buffer-name=files   -start-insert file<cr>
+nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=mru     -start-insert file_mru<cr>
+nnoremap <leader>o :<C-u>Unite -no-split -buffer-name=outline -start-insert outline<cr>
+nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
+nnoremap <leader>e :<C-u>Unite -no-split -buffer-name=buffer  buffer<cr>
 " Semicolon is just colon
 " nnoremap ; :
 
