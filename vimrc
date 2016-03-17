@@ -60,6 +60,8 @@ Plugin 'Shougo/vimfiler.vim'
 Plugin 'tpope/vim-commentary'
 " solarized color-scheme
 Plugin 'altercation/vim-colors-solarized'
+" for html tag auto-closing
+Plugin 'docunext/closetag.vim'
 " DelimitMate for ",',).. auto closing
 Plugin 'Raimondi/delimitMate'
 " for close all but current buffer.
