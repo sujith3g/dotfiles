@@ -5,7 +5,7 @@ export ZSH=/Users/sujith/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
+ZSH_THEME="agnoster"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -58,8 +58,26 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin"
 
 source $ZSH/oh-my-zsh.sh
 
+export PATH="$HOME/.node/bin:$PATH"
+export PATH="$PATH:/Users/sujith/coding/android/sdk/android-sdk-macosx/platform-tools"
+export PATH="$PATH:/Users/sujith/coding/android/sdk/android-sdk-macosx/tools"
+export PATH="/usr/local/mysql/bin:$PATH"
+
+#append sensitive info from ~/.sensitive
+if [ -f ~/.sensitive ]; then
+  . ~/.sensitive
+fi
+
+
+#for android
+export USE_GLOBAL_ADK=t
+export ANDROID_HOME="/Users/sujith/coding/android/sdk/android-sdk-macosx/"
+
+export POWERLINE_CONFIG_COMMAND=powerline-config
+
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+ export LC_ALL=en_US.UTF-8
+ export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -82,3 +100,11 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+### =========== My Aliases =============== ###
+alias dcount="figlet $(ls ~/Downloads/ | wc -l)"
+if [ -f ~/.aliases ]; then
+. ~/.aliases
+fi
+## for zsh-comletions ######
+fpath=(/usr/local/share/zsh-completions $fpath)
+
