@@ -1,3 +1,10 @@
-tmux/resurrect/*
+.DS_Store
+
+#ignore tmux-plugins
 tmux/plugins/*
+#ignore tmux-resurrect files
+tmux/resurrect/*
+#ignore vim packages
 vim/bundle/*
+
+vim/.netrwhist
