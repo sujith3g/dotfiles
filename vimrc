@@ -26,6 +26,8 @@ Plugin 'elzr/vim-json'
 Plugin 'isRuslan/vim-es6'
 " for html-js indentation
 Plugin 'vim-scripts/JavaScript-Indent'
+" for vertical line to show indent-level
+Plugin 'yggdroot/indentline'
 
 """"""""""""""""""End-of Syntax"""""""""""""""
 " Goto matching {,(,",', or html-tag using % key.
