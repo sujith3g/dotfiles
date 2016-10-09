@@ -1,5 +1,5 @@
 # Unix
 alias ll="ls -al"
-alias cl="clear"
+alias c="clear"
 alias ..="cd .."
 alias weather='curl -4 wttr.in'

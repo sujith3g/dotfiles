@@ -8,7 +8,7 @@
 
 dir=~/coding/git_repos/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files="vimrc gitignore gitmessage gitconfig vim aliases tmux.conf bash_profile"    # list of files/folders to symlink in homedir
+files="vimrc vim gitignore gitmessage gitconfig aliases tmux.conf tmux zshrc bash_profile"    # list of files/folders to symlink in homedir
 
 ##########
 
