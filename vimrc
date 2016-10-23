@@ -255,6 +255,10 @@ autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 nmap <silent><leader>s :set spell!<CR>
 "set spell check language as British English
 set spelllang=en_gb
+"enable spell checking for markdown files
+autocmd BufRead,BufNewFile *.md setlocal spell
+"enable spell checkig for git commit message
+autocmd FileType gitcommit setlocal spell
 
 " Bubble single lines
 "nmap <C-up> ddkP
