@@ -58,6 +58,9 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin"
 
 source $ZSH/oh-my-zsh.sh
 
+#bower
+export PATH="/usr/local/sbin:$PATH"
+
 export PATH="$HOME/.node/bin:$PATH"
 export PATH="$PATH:/Users/sujith/coding/android/sdk/android-sdk-macosx/platform-tools"
 export PATH="$PATH:/Users/sujith/coding/android/sdk/android-sdk-macosx/tools"
@@ -108,3 +111,5 @@ fi
 ## for zsh-comletions ######
 fpath=(/usr/local/share/zsh-completions $fpath)
 
+
+export PATH="$HOME/.yarn/bin:$PATH"
