@@ -78,6 +78,8 @@ Plugin 'shanzi/autoHEADER'
 Plugin 'kshenoy/vim-signature'
 " Plugin for moving between tmux splits and vim splits
 Bundle 'christoomey/vim-tmux-navigator'
+" Plugin for highlightinh syntax errors
+Plugin 'scrooloose/syntastic'
 
 
 " All of your Plugins must be added before the following line
@@ -106,6 +108,12 @@ set cursorline "highlight currentline
 set hidden
 "To disable log from javascript-indent, ~/.vim/indent/javascript.vim
 let g:js_indent_log = 0
+
+" Set Leader key as comma
+let mapleader = ","
+" Set LocalLeader key as ';'
+let maplocalleader = " "
+
 
 """""""""""""""""""""""""""
 "    Powerline configs    "
@@ -161,6 +169,31 @@ let g:autoHEADER_fill_char_repeat = 70
 let g:autoHEADER_default_author = "sujith <sujith3g(at)gmail(dot)com>"
 """""""""""""""""""""""""
 
+"""""""""""""""""""""""""
+"     Syntastic         "
+"""""""""""""""""""""""""
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_disabled_filetypes=['html']
+let syntastic_mode_map = { 'passive_filetypes': ['html'] }
+let g:syntastic_error_symbol = '✗'
+let g:syntastic_style_error_symbol = '✠'
+let g:syntastic_warning_symbol = '∆'
+let g:syntastic_style_warning_symbol = '≈'
+
+nmap <Leader>] :lnext<CR>
+nmap <Leader>[ :lprev<CR>
+
+highlight link SyntasticErrorSign SignColumn
+highlight link SyntasticWarningSign SignColumn
+highlight link SyntasticStyleErrorSign SignColumn
+highlight link SyntasticStyleWarningSign SignColumn
+"""""""""""""""""""""""""
+
 " For ag Plugin integration
 let g:ackprg = 'ag --vimgrep'
 
@@ -200,10 +233,6 @@ augroup END
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 autocmd FileType markdown set ai formatoptions=tcroqn2 comments=n:>
 
-" Set Leader key as comma
-let mapleader = ","
-" Set LocalLeader key as ';'
-let maplocalleader = " "
 
 " Allow us to use Ctrl-s and Ctrl-q as keybinds
 silent !stty -ixon
@@ -301,6 +330,8 @@ nnoremap <leader>e :<C-u>Unite -no-split -buffer-name=buffer  buffer<cr>
 
 " For recursive unfolding
 noremap <leader><space> zO
+" Reload vimrc.
+nnoremap <Leader>r :source $MYVIMRC<CR>
 
 " Splits tweaks {{{
 map <C-h> <C-w>h
