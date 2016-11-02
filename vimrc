@@ -185,7 +185,9 @@ let g:syntastic_style_error_symbol = '✠'
 let g:syntastic_warning_symbol = '∆'
 let g:syntastic_style_warning_symbol = '≈'
 
+" move to next error
 nmap <Leader>] :lnext<CR>
+" move to previous error.
 nmap <Leader>[ :lprev<CR>
 
 highlight link SyntasticErrorSign SignColumn
@@ -205,10 +207,13 @@ set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<
 set list
 
 "Indentation
-" by default, the indent is 2 spaces.
+" by default, use 2 spaces for indent.
 set shiftwidth=2
+" number of spaces in tab when editing
 set softtabstop=2
+" number of visual spaces per TAB
 set tabstop=2
+" tabs are spaces
 set expandtab
 
 " reselect visual block after indent/outdent
