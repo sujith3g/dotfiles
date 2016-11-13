@@ -14,7 +14,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 " Tabularize text using patterns/regex
 Plugin 'godlygeek/tabular'
-""""""""""""""""""""Syntax""""""""""""""""""""
+"{"""""""""""""""""""Syntax""""""""""""""""""""
 
 " Markdown syntax support for vim
 Plugin 'plasticboy/vim-markdown'
@@ -29,7 +29,7 @@ Plugin 'vim-scripts/JavaScript-Indent'
 " for vertical line to show indent-level
 Plugin 'yggdroot/indentline'
 
-""""""""""""""""""End-of Syntax"""""""""""""""
+""""""""""""""""""End-of Syntax"""""""""""""""}
 " Goto matching {,(,",', or html-tag using % key.
 Plugin 'matchit.zip'
 " Git wraper for vim
@@ -117,7 +117,7 @@ let mapleader = ","
 let maplocalleader = " "
 
 
-"""""""""""""""""""""""""""
+"{""""""""""""""""""""""""""
 "    Powerline configs    "
 """""""""""""""""""""""""""
 " My PowerLine Configs
@@ -125,23 +125,23 @@ source /usr/local/lib/python2.7/site-packages/powerline/bindings/vim/plugin/powe
 set laststatus=2
 let g:Powerline_symbols = 'fancy'
 set fillchars+=stl:\ ,stlnc:\
-"""""""""""""""""""""""""""
+"""""""""""""""""""""""""""}
 
 "for keeping swap files in separate directory
 set directory=~/.vim_tmp/swap
 "for keeping undo in separate directory
 set undodir=~/.vim_tmp/undo_dir
 
-"""""""""""""""""""""""""
+"{""""""""""""""""""""""""
 "    gundo configs      "
 """""""""""""""""""""""""
 let g:gundo_width = 40
 let g:gundo_preview_height = 40
 let g:gundo_right = 0  " keep gundo_preview left-side 
 nnoremap <F5> :GundoToggle<CR>
-"""""""""""""""""""""""""
+"""""""""""""""""""""""""}
 
-"""""""""""""""""""""""""
+"{""""""""""""""""""""""""
 "    vimshell configs   "
 """""""""""""""""""""""""
 let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
@@ -152,26 +152,26 @@ let g:vimshell_editor_command = "mvim"
 if has("gui_running")
   let g:vimshell_editor_command = "mvim"
 endif
-"""""""""""""""""""""""""
+"""""""""""""""""""""""""}
 
-"""""""""""""""""""""""""
+"{""""""""""""""""""""""""
 "    ctrlp configs      "
 """""""""""""""""""""""""
 " For ctrlp plugin
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 " For ctrlp to search hidden files
 let g:ctrlp_show_hidden = 1
-"""""""""""""""""""""""""
+"""""""""""""""""""""""""}
 
-"""""""""""""""""""""""""
+"{""""""""""""""""""""""""
 "     Fileheader        "
 """""""""""""""""""""""""
 let g:autoHEADER_auto_enable = 0
 let g:autoHEADER_fill_char_repeat = 70
 let g:autoHEADER_default_author = "sujith <sujith3g(at)gmail(dot)com>"
-"""""""""""""""""""""""""
+"""""""""""""""""""""""""}
 
-"""""""""""""""""""""""""
+"{""""""""""""""""""""""""
 "     Syntastic         "
 """""""""""""""""""""""""
 let g:syntastic_always_populate_loc_list = 1
@@ -196,7 +196,7 @@ highlight link SyntasticErrorSign SignColumn
 highlight link SyntasticWarningSign SignColumn
 highlight link SyntasticStyleErrorSign SignColumn
 highlight link SyntasticStyleWarningSign SignColumn
-"""""""""""""""""""""""""
+"""""""""""""""""""""""""}
 
 " For ag Plugin integration
 let g:ackprg = 'ag --vimgrep'
@@ -248,7 +248,7 @@ silent !stty -ixon
 " Restore default behaviour when leaving Vim.
 autocmd VimLeave * silent !stty ixon
 
-""""""""""""""""""""""""""""""""""""""
+"{"""""""""""""""""""""""""""""""""""""
 "          Functions                 "
 """"""""""""""""""""""""""""""""""""""
 function! UnderlineHeading(level)
@@ -260,9 +260,9 @@ function! UnderlineHeading(level)
     normal! I### 
   endif
 endfunction
-"""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""}
 
-"""""""""""""""""""""""""""""""""""""""
+"{""""""""""""""""""""""""""""""""""""""
 "          Key Maps                   "
 """""""""""""""""""""""""""""""""""""""
 " space open/closes folds
@@ -360,5 +360,5 @@ ino <right> <Nop>
 ino <up> <Nop>
 """""""""""""""""""""""""""""""""""""""
 "          End-of Key Maps            "
-"""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""}
 
