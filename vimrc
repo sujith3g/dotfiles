@@ -80,6 +80,8 @@ Plugin 'kshenoy/vim-signature'
 Bundle 'christoomey/vim-tmux-navigator'
 " Plugin for highlightinh syntax errors
 Plugin 'scrooloose/syntastic'
+"for search, substitute and abbreviate multiple variants of a word.
+Plugin 'tpope/vim-abolish'
 
 
 " All of your Plugins must be added before the following line
@@ -176,9 +178,9 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_loc_list_height=5
 
 let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_disabled_filetypes=['html']
 let syntastic_mode_map = { 'passive_filetypes': ['html'] }
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_style_error_symbol = '✠'
@@ -237,7 +239,8 @@ augroup END
 " for markdown file syntax highlighting
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 autocmd FileType markdown set ai formatoptions=tcroqn2 comments=n:>
-
+" for replacing abbreviations in markdown files
+autocmd FileType markdown source ~/.vim_abbreviations
 
 " Allow us to use Ctrl-s and Ctrl-q as keybinds
 silent !stty -ixon
