@@ -1,3 +1,8 @@
+" Install Vundle if it is not already installed
+if !isdirectory(expand("~/.vim/bundle/Vundle.vim"))
+    silent !git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+endif
+
 set nocompatible              " be iMproved, required
 filetype off                  " required
 set clipboard=unnamed " Enable system clipboard in OS X
