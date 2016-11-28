@@ -280,6 +280,7 @@ nmap <CR> o<Esc>
 map <C-n> :NERDTreeToggle<CR>
 " Show hidden files in NerdTree by default
 let g:NERDTreeShowHidden=1
+let NERDTreeIgnore = ['\.DS_Store$']
 
 " For underline markdown headings
 nnoremap <leader>u1 :call UnderlineHeading(1)<CR>
