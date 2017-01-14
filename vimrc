@@ -39,6 +39,8 @@ Plugin 'yggdroot/indentline'
 Plugin 'matchit.zip'
 " Git wraper for vim
 Plugin 'tpope/vim-fugitive'
+" Plugin shows git diff
+Plugin 'airblade/vim-gitgutter'
 " For surrounding text with "",'',{},(),etc.
 Plugin 'tpope/vim-surround'
 " For fuzzy search using CtrlP
@@ -49,14 +51,14 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'marijnh/tern_for_vim'
 " vim-orgmode - Text outlining and task management for Vim
 Plugin 'jceb/vim-orgmode'
+" vimwiki for - A PERSONAL WIKI FOR VIM
+Plugin 'vimwiki/vimwiki'
 " speeddating - For date/timestamp manipulation, reqd for vim-rgmode.
 Plugin 'tpope/vim-speeddating'
 " ag plugin for searching across files/folders using ag
 Plugin 'rking/ag.vim'
 " gundo plugin for visualize vim undo tree.
 Plugin 'sjl/gundo.vim'
-" Vim-shell, shell in vim :)
-Plugin 'Shougo/vimshell.vim'
 " vimshell dependency
 Plugin 'Shougo/vimproc.vim'
 " vimshell dependancy

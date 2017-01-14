@@ -113,3 +113,4 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 
 
 export PATH="$HOME/.yarn/bin:$PATH"
+eval "$(thefuck --alias)"
