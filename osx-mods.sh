@@ -11,6 +11,12 @@ defaults write com.apple.finder AppleShowAllFiles YES
 echo "Show extensions with filename";
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true;
 
+echo "Disable the warning when changing file extensions";
+defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+
+echo "Expand save panel by default";
+defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+
 echo "set Dock tile size 36";
 defaults write com.apple.dock tilesize -int 36;
 
