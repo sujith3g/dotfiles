@@ -33,6 +33,7 @@ Plugin 'isRuslan/vim-es6'
 Plugin 'vim-scripts/JavaScript-Indent'
 " for vertical line to show indent-level
 Plugin 'yggdroot/indentline'
+Plugin 'mxw/vim-jsx'
 
 """"""""""""""""""End-of Syntax"""""""""""""""}
 " Goto matching {,(,",', or html-tag using % key.
