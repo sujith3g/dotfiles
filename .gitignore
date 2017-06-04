@@ -6,5 +6,6 @@ tmux/plugins/*
 tmux/resurrect/*
 #ignore vim packages
 vim/bundle/*
+nvim/bundle/*
 
 vim/.netrwhist
