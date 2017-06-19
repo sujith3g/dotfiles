@@ -5,7 +5,11 @@ endif
 " Program to use for evaluating python code
 "" let g:python_host_prog  = '/usr/local/bin/python'
 
-"set nocompatible              " be iMproved, required
+" switch cursor to line when in insert mode, and block when not
+set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+  \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
+  \,sm:block-blinkwait175-blinkoff150-blinkon175
+
 filetype off                  " required
 set clipboard=unnamed " Enable system clipboard in OS X
 
@@ -380,4 +384,3 @@ ino <up> <Nop>
 """""""""""""""""""""""""""""""""""""""
 "          End-of Key Maps            "
 """""""""""""""""""""""""""""""""""""""}
-
