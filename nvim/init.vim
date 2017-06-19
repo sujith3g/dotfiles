@@ -92,6 +92,9 @@ Bundle 'christoomey/vim-tmux-navigator'
 Plugin 'scrooloose/syntastic'
 "for search, substitute and abbreviate multiple variants of a word.
 Plugin 'tpope/vim-abolish'
+" for airline
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
 
 " All of your Plugins must be added before the following line
@@ -126,6 +129,11 @@ let mapleader = ","
 " Set LocalLeader key as ';'
 let maplocalleader = " "
 
+"{""""""""""""""""""""""""""
+"    Airline configs    "
+"""""""""""""""""""""""""""
+let g:airline_powerline_fonts = 1
+"""""""""""""""""""""""""""
 
 "{""""""""""""""""""""""""""
 "    Powerline configs    "
@@ -147,7 +155,7 @@ set undodir=~/.nvim_tmp/undo_dir
 """""""""""""""""""""""""
 let g:gundo_width = 40
 let g:gundo_preview_height = 40
-let g:gundo_right = 0  " keep gundo_preview left-side 
+let g:gundo_right = 0  " keep gundo_preview left-side
 nnoremap <F5> :GundoToggle<CR>
 """""""""""""""""""""""""}
 
@@ -266,8 +274,8 @@ function! UnderlineHeading(level)
     normal! yypVr=
   elseif a:level == 2
     normal! yypVr-
-  else 
-    normal! I### 
+  else
+    normal! I###
   endif
 endfunction
 """""""""""""""""""""""""""""""""""""""}
