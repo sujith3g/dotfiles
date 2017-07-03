@@ -263,7 +263,8 @@ au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 autocmd FileType markdown set ai formatoptions=tcroqn2 comments=n:>
 " for replacing abbreviations in markdown files
 autocmd FileType markdown source ~/.vim_abbreviations
-
+" Open NERDTree if no file argument provided
+autocmd vimenter * if !argc() | NERDTree | endif
 " Allow us to use Ctrl-s and Ctrl-q as keybinds
 " silent !stty -ixon
 
@@ -337,6 +338,9 @@ inoremap <silent> <C-S> <C-O>:update<CR><C-C>
 
 " Map jk to <Esc> from insert mode.
 imap jk <Esc>
+
+" Disable highlight untill next search
+nnoremap <esc><esc> :noh<return>
 
 " Tab movements
 nnoremap <leader>m :tabn<CR>
