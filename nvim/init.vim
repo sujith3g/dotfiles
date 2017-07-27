@@ -93,7 +93,8 @@ Plugin 'kshenoy/vim-signature'
 " Plugin for moving between tmux splits and vim splits
 Bundle 'christoomey/vim-tmux-navigator'
 " Plugin for highlightinh syntax errors
-Plugin 'scrooloose/syntastic'
+" Plugin 'scrooloose/syntastic'
+Plugin 'neomake/neomake'
 "for search, substitute and abbreviate multiple variants of a word.
 Plugin 'tpope/vim-abolish'
 " for airline
@@ -196,28 +197,48 @@ let g:autoHEADER_default_author = "sujith <sujith3g(at)gmail(dot)com>"
 "{""""""""""""""""""""""""
 "     Syntastic         "
 """""""""""""""""""""""""
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_loc_list_height=5
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+"let g:syntastic_loc_list_height=5
+"
+"let g:syntastic_javascript_checkers = ['eslint']
+"let syntastic_mode_map = { 'passive_filetypes': ['html'] }
+"let g:syntastic_error_symbol = '✗'
+"let g:syntastic_style_error_symbol = '✠'
+"let g:syntastic_warning_symbol = '∆'
+"let g:syntastic_style_warning_symbol = '≈'
+"
+"highlight link SyntasticErrorSign SignColumn
+"highlight link SyntasticWarningSign SignColumn
+"highlight link SyntasticStyleErrorSign SignColumn
+"highlight link SyntasticStyleWarningSign SignColumn
+"
+"""""""""""""""""""""""""}
 
-let g:syntastic_javascript_checkers = ['eslint']
-let syntastic_mode_map = { 'passive_filetypes': ['html'] }
-let g:syntastic_error_symbol = '✗'
-let g:syntastic_style_error_symbol = '✠'
-let g:syntastic_warning_symbol = '∆'
-let g:syntastic_style_warning_symbol = '≈'
+"{""""""""""""""""""""""""
+"   Neomake              "
+""""""""""""""""""""""""""
+
+let g:neomake_javascript_enabled_makers = ['eslint']
+autocmd! BufWritePost,BufEnter * Neomake
+
+let g:neomake_open_list = 2
 
 " move to next error
 nmap <Leader>] :lnext<CR>
 " move to previous error.
 nmap <Leader>[ :lprev<CR>
 
-highlight link SyntasticErrorSign SignColumn
-highlight link SyntasticWarningSign SignColumn
-highlight link SyntasticStyleErrorSign SignColumn
-highlight link SyntasticStyleWarningSign SignColumn
+let g:neomake_warning_sign = {
+  \ 'text': '∆',
+  \ 'texthl': 'WarningMsg',
+  \ }
+let g:neomake_error_sign = {
+  \ 'text': '✗',
+  \ 'texthl': 'WarningMsg',
+  \ }
 """""""""""""""""""""""""}
 
 " For ag Plugin integration

@@ -2,4 +2,4 @@
 alias ll="ls -al"
 alias c="clear"
 alias ..="cd .."
-alias weather='curl -4 wttr.in'
+alias weather='curl -4 wttr.in/bangalore'
