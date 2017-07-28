@@ -239,6 +239,13 @@ let g:neomake_error_sign = {
   \ 'text': '✗',
   \ 'texthl': 'WarningMsg',
   \ }
+" close quickfix window with buffer
+autocmd BufWinEnter quickfix nnoremap <silent> <buffer>
+                \   q :cclose<cr>:lclose<cr>
+    autocmd BufEnter * if (winnr('$') == 1 && &buftype ==# 'quickfix' ) |
+                \   bd|
+                \   q | endif
+
 """""""""""""""""""""""""}
 
 " For ag Plugin integration
@@ -312,8 +319,16 @@ endfunction
 " space open/closes folds
 autocmd FileType markdown nnoremap <space> za
 autocmd FileType javascript nnoremap <space> za
-" <Enter> for newline without entering insert-mode
-nmap <CR> o<Esc>
+" <Enter> for newline without entering insert-mode, except on quickfix buffer
+function! NewlineEnter()
+  if &buftype ==# 'quickfix'
+    execute "normal! \<CR>"
+  else
+    normal! o
+  endif
+endfunction
+
+nnoremap <CR> :call NewlineEnter()<CR>
 
 " My NerdTree shortcut
 map <C-n> :NERDTreeToggle<CR>
