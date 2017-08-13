@@ -1,5 +1,5 @@
 " Install Vundle if it is not already installed
-if !isdirectory(expand("~/.config/nvim/bundle/Vundle.vim"))
+if !filereadable(expand("~/.config/nvim/bundle/Vundle.vim/README.md"))
     silent !git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/bundle/Vundle.vim
 endif
 " Program to use for evaluating python code
