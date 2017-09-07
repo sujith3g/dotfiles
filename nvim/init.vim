@@ -222,7 +222,7 @@ let g:autoHEADER_default_author = "sujith <sujith3g(at)gmail(dot)com>"
 """"""""""""""""""""""""""
 
 let g:neomake_javascript_enabled_makers = ['eslint']
-autocmd! BufWritePost,BufEnter * Neomake
+autocmd! BufWritePost,BufEnter *.js Neomake
 
 let g:neomake_open_list = 2
 

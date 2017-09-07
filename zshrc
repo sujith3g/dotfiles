@@ -66,6 +66,8 @@ source $ZSH/oh-my-zsh.sh
 
 #bower
 export PATH="/usr/local/sbin:$PATH"
+#for go
+export PATH="/usr/local/go/bin:$PATH"
 
 export PATH="$HOME/.node/bin:$PATH"
 export PATH="$PATH:/Users/sujith/coding/android/sdk/android-sdk-macosx/platform-tools"
@@ -120,3 +122,8 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 
 export PATH="$HOME/.yarn/bin:$PATH"
 eval "$(thefuck --alias)"
+## for Azure-cli
+export PATH="$PATH:/Users/sujith/bin"
+autoload bashcompinit && bashcompinit
+source '/Users/sujith/lib/azure-cli/az.completion'
+export GPG_TTY=$(tty)

@@ -4,6 +4,7 @@
 [user]
   name = Sujith G
   email = sujith3g@gmail.com
+  signingkey = 2E65E75F058004D1
 [push]
   default = simple
 [filter "lfs"]
@@ -22,3 +23,4 @@
     untracked = cyan
 [commit]
   template = ~/.gitmessage
+  gpgsign = true

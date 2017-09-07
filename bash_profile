@@ -42,3 +42,7 @@ ssh() {
         command ssh "$@"
     fi
 }
+
+export PATH="$PATH:/Users/sujith/bin"
+
+source '/Users/sujith/lib/azure-cli/az.completion'

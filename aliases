@@ -1,4 +1,4 @@
-# Unix
+# Unix alias file
 alias ll="ls -al"
 alias c="clear"
 alias ..="cd .."
