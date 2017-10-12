@@ -52,7 +52,7 @@ ZSH_THEME="agnoster"
 plugins=(git vagrant)
 
 #custom plugin for docker-machine auto-completion
-plugins+=(docker-machine)
+plugins+=(docker-machine aws zsh-syntax-highlighting)
 
 # Make sure compinit is loaded
 autoload -U compinit && compinit -i
@@ -127,3 +127,4 @@ export PATH="$PATH:/Users/sujith/bin"
 autoload bashcompinit && bashcompinit
 source '/Users/sujith/lib/azure-cli/az.completion'
 export GPG_TTY=$(tty)
+export HISTCONTROL=ignorespace
