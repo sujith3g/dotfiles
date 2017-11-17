@@ -114,6 +114,8 @@ colorscheme solarized " Set color scheme
 set nu " Enable line numbers
 set backspace=indent,eol,start
 set cursorline "highlight currentline
+"Set scorolling when you are 8 line away from margin
+set scrolloff=7
 " For hiding modified buffers without warning message
 set hidden
 "To disable log from javascript-indent, ~/.vim/indent/javascript.vim
