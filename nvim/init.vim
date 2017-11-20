@@ -1,6 +1,8 @@
 " Install Vundle if it is not already installed
-if !filereadable(expand("~/.config/nvim/bundle/Vundle.vim/README.md"))
-    silent !git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/bundle/Vundle.vim
+if !filereadable(expand("~/.config/nvim/autoload/plug.vim", 1))
+  silent call mkdir(expand("~/.config/nvim/autoload", 1), 'p')
+  exe '!curl -fLo '.expand("~/.config/nvim/autoload/plug.vim", 1)
+      \ .' https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 endif
 " Program to use for evaluating python code
 "" let g:python_host_prog  = '/usr/local/bin/python'
@@ -13,108 +15,102 @@ set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
 filetype off                  " required
 set clipboard=unnamed " Enable system clipboard in OS X
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.config/nvim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+call plug#begin('~/.local/share/nvim/bundle')
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/VunDle.vim'
 " For file explorer in sublime/textmate.
-Plugin 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree' ", { 'on':  'NERDTreeToggle' }
 " Tabularize text using patterns/regex
-Plugin 'godlygeek/tabular'
+Plug 'godlygeek/tabular'
 "{"""""""""""""""""""Syntax""""""""""""""""""""
 
 " Markdown syntax support for vim
-Plugin 'plasticboy/vim-markdown'
+Plug 'plasticboy/vim-markdown'
 " Javascript syntax support
-Plugin 'pangloss/vim-javascript'
+Plug 'pangloss/vim-javascript'
 " Plugin for json indent
-Plugin 'elzr/vim-json'
+Plug 'elzr/vim-json'
 " For ecmascript6 syntax support
-Plugin 'isRuslan/vim-es6'
+Plug 'isRuslan/vim-es6'
 " for html-js indentation
-Plugin 'vim-scripts/JavaScript-Indent'
+Plug 'vim-scripts/JavaScript-Indent'
 " for vertical line to show indent-level
-Plugin 'yggdroot/indentline'
-Plugin 'mxw/vim-jsx'
+Plug 'yggdroot/indentline'
+Plug 'mxw/vim-jsx'
 " for .editorconfig
-Plugin 'editorconfig/editorconfig-vim'
+Plug 'editorconfig/editorconfig-vim'
 
 """"""""""""""""""End-of Syntax"""""""""""""""}
 " Goto matching {,(,",', or html-tag using % key.
-Plugin 'matchit.zip'
+Plug 'vim-scripts/matchit.zip'
 " Git wraper for vim
-Plugin 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 " Plugin shows git diff
-Plugin 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 " For surrounding text with "",'',{},(),etc.
-Plugin 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 " For fuzzy search using CtrlP
-Plugin 'kien/ctrlp.vim'
+Plug 'kien/ctrlp.vim'
 " YouCompleteMe for autocompletion
-Plugin 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe'
 " tern for JS support in YouCompleteMe
-Plugin 'marijnh/tern_for_vim'
+Plug 'marijnh/tern_for_vim'
 " vim-orgmode - Text outlining and task management for Vim
-Plugin 'jceb/vim-orgmode'
+Plug 'jceb/vim-orgmode'
 " vimwiki for - A PERSONAL WIKI FOR VIM
-Plugin 'vimwiki/vimwiki'
+Plug 'vimwiki/vimwiki'
 " speeddating - For date/timestamp manipulation, reqd for vim-rgmode.
-Plugin 'tpope/vim-speeddating'
+Plug 'tpope/vim-speeddating'
 " ag plugin for searching across files/folders using ag
-Plugin 'rking/ag.vim'
+Plug 'rking/ag.vim'
 " gundo plugin for visualize vim undo tree.
-Plugin 'sjl/gundo.vim'
+Plug 'sjl/gundo.vim'
 " vimshell dependency
-Plugin 'Shougo/vimproc.vim'
+Plug 'Shougo/vimproc.vim'
 " vimshell dependancy
-Plugin 'Shougo/unite.vim'
+Plug 'Shougo/unite.vim'
 " Vimfiler for unite, unite dependency
-Plugin 'Shougo/vimfiler.vim'
+Plug 'Shougo/vimfiler.vim'
 " commentry for commenting
-Plugin 'tpope/vim-commentary'
+Plug 'tpope/vim-commentary'
 " solarized color-scheme
-Plugin 'altercation/vim-colors-solarized'
+Plug 'altercation/vim-colors-solarized'
 " for html tag auto-closing
-Plugin 'docunext/closetag.vim'
+Plug 'docunext/closetag.vim'
 " DelimitMate for ",',).. auto closing
-Plugin 'Raimondi/delimitMate'
+Plug 'Raimondi/delimitMate'
 " for close all but current buffer.
-Plugin 'BufOnly.vim'
+Plug 'vim-scripts/BufOnly.vim'
 " for html,js,css beautify
-Plugin 'maksimr/vim-jsbeautify'
+Plug 'maksimr/vim-jsbeautify'
 " for html,js,css beautify
-Plugin 'einars/js-beautify'
+Plug 'einars/js-beautify'
 " autoheader for FileHeader/Template
-Plugin 'shanzi/autoHEADER'
+Plug 'shanzi/autoHEADER'
 " for displaying, toggle marks.
-Plugin 'kshenoy/vim-signature'
+Plug 'kshenoy/vim-signature'
 " Plugin for moving between tmux splits and vim splits
-Bundle 'christoomey/vim-tmux-navigator'
+Plug 'christoomey/vim-tmux-navigator'
 " Plugin for highlightinh syntax errors
-" Plugin 'scrooloose/syntastic'
-Plugin 'neomake/neomake'
+" Plug 'scrooloose/syntastic'
+Plug 'neomake/neomake'
 "for search, substitute and abbreviate multiple variants of a word.
-Plugin 'tpope/vim-abolish'
+Plug 'tpope/vim-abolish'
 " for airline
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
+call plug#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 "
 " Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+" :PlugInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PlugUpdate - searches for foo; append `!` to refresh local cache
+" :PlugClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+" :PlugStatus
 "
 " see :h vundle for more details or wiki for FAQ
 
