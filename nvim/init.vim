@@ -1,4 +1,4 @@
-" Install Vundle if it is not already installed
+" Install Plug if it is not already installed
 if !filereadable(expand("~/.config/nvim/autoload/plug.vim", 1))
   silent call mkdir(expand("~/.config/nvim/autoload", 1), 'p')
   exe '!curl -fLo '.expand("~/.config/nvim/autoload/plug.vim", 1)
@@ -24,24 +24,26 @@ Plug 'godlygeek/tabular'
 "{"""""""""""""""""""Syntax""""""""""""""""""""
 
 " Markdown syntax support for vim
-Plug 'plasticboy/vim-markdown'
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown'}
+" For typescript syntax support
+Plug 'leafgarland/typescript-vim'
 " Javascript syntax support
-Plug 'pangloss/vim-javascript'
+Plug 'pangloss/vim-javascript', { 'for': 'js' }
 " Plugin for json indent
-Plug 'elzr/vim-json'
+Plug 'elzr/vim-json', { 'for': 'json' }
 " For ecmascript6 syntax support
 Plug 'isRuslan/vim-es6'
 " for html-js indentation
-Plug 'vim-scripts/JavaScript-Indent'
+Plug 'vim-scripts/JavaScript-Indent', { 'for': 'js' }
 " for vertical line to show indent-level
 Plug 'yggdroot/indentline'
-Plug 'mxw/vim-jsx'
+Plug 'mxw/vim-jsx', { 'for': 'jsx' }
 " for .editorconfig
 Plug 'editorconfig/editorconfig-vim'
 
 """"""""""""""""""End-of Syntax"""""""""""""""}
 " Goto matching {,(,",', or html-tag using % key.
-Plug 'vim-scripts/matchit.zip'
+Plug 'vim-scripts/matchit.zip', { 'for': 'html' }
 " Git wraper for vim
 Plug 'tpope/vim-fugitive'
 " Plugin shows git diff
@@ -53,11 +55,11 @@ Plug 'kien/ctrlp.vim'
 " YouCompleteMe for autocompletion
 Plug 'Valloric/YouCompleteMe'
 " tern for JS support in YouCompleteMe
-Plug 'marijnh/tern_for_vim'
+Plug 'marijnh/tern_for_vim', { 'for': 'js' }
 " vim-orgmode - Text outlining and task management for Vim
-Plug 'jceb/vim-orgmode'
+Plug 'jceb/vim-orgmode', { 'for': 'org'}
 " vimwiki for - A PERSONAL WIKI FOR VIM
-Plug 'vimwiki/vimwiki'
+Plug 'vimwiki/vimwiki', { 'for': 'wiki'}
 " speeddating - For date/timestamp manipulation, reqd for vim-rgmode.
 Plug 'tpope/vim-speeddating'
 " ag plugin for searching across files/folders using ag
@@ -75,7 +77,7 @@ Plug 'tpope/vim-commentary'
 " solarized color-scheme
 Plug 'altercation/vim-colors-solarized'
 " for html tag auto-closing
-Plug 'docunext/closetag.vim'
+Plug 'docunext/closetag.vim', { 'for': 'html' }
 " DelimitMate for ",',).. auto closing
 Plug 'Raimondi/delimitMate'
 " for close all but current buffer.
@@ -92,13 +94,18 @@ Plug 'kshenoy/vim-signature'
 Plug 'christoomey/vim-tmux-navigator'
 " Plugin for highlightinh syntax errors
 " Plug 'scrooloose/syntastic'
-Plug 'neomake/neomake'
+" Plug 'neomake/neomake'
 "for search, substitute and abbreviate multiple variants of a word.
-Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-abolish', { 'for': 'markdown'}
 " for airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-
+" Highlight yanked content
+Plug 'machakann/vim-highlightedyank'
+" Floobit for pair programming
+Plug 'floobits/floobits-neovim'
+" For Ale linter
+Plug 'w0rp/ale'
 
 " All of your Plugins must be added before the following line
 call plug#end()            " required
@@ -119,7 +126,7 @@ set t_Co=256
 syntax enable " Enable syntax highlighting
 set background=dark " Set dark background
 colorscheme solarized " Set color scheme
-set nu " Enable line numbers
+set number " Enable line numbers
 set backspace=indent,eol,start
 set cursorline "highlight currentline
 " Set scrolling when you are 8 line away from margin
@@ -218,33 +225,55 @@ let g:autoHEADER_default_author = "sujith <sujith3g(at)gmail(dot)com>"
 """""""""""""""""""""""""}
 
 "{""""""""""""""""""""""""
+"   Ale                  "
+""""""""""""""""""""""""""
+
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '∆'
+
+" " move to next error
+nmap <Leader>] :lnext<CR>
+" " move to previous error.
+nmap <Leader>[ :lprev<CR>
+let g:ale_open_list = 'on_save'
+
+nmap gD :ALEGoToDefinition<CR>
+
+augroup CloseLoclistWindowGroup
+    autocmd!
+    autocmd QuitPre * if empty(&buftype) | lclose | endif
+  augroup END
+
+"""""""""""""""""""""""""}
+
+"{""""""""""""""""""""""""
 "   Neomake              "
 """"""""""""""""""""""""""
 
-let g:neomake_javascript_enabled_makers = ['eslint']
-autocmd! BufWritePost,BufEnter *.js Neomake
+" let g:neomake_typescript_enabled_makers = ['tsc', 'tslint']
+" autocmd! BufWritePost,BufEnter *.ts Neomake
+" autocmd! BufWritePost,BufEnter *.tsx Neomake
 
-let g:neomake_open_list = 2
+" let g:neomake_javascript_enabled_makers = ['eslint']
+" autocmd! BufWritePost,BufEnter *.js Neomake
 
-" move to next error
-nmap <Leader>] :lnext<CR>
-" move to previous error.
-nmap <Leader>[ :lprev<CR>
+" let g:neomake_open_list = 2
 
-let g:neomake_warning_sign = {
-  \ 'text': '∆',
-  \ 'texthl': 'WarningMsg',
-  \ }
-let g:neomake_error_sign = {
-  \ 'text': '✗',
-  \ 'texthl': 'WarningMsg',
-  \ }
+
+" let g:neomake_warning_sign = {
+"   \ 'text': '∆',
+"   \ 'texthl': 'WarningMsg',
+"   \ }
+" let g:neomake_error_sign = {
+"   \ 'text': '✗',
+"   \ 'texthl': 'WarningMsg',
+"   \ }
 " close quickfix window with buffer
-autocmd BufWinEnter quickfix nnoremap <silent> <buffer>
-                \   q :cclose<cr>:lclose<cr>
-    autocmd BufEnter * if (winnr('$') == 1 && &buftype ==# 'quickfix' ) |
-                \   bd|
-                \   q | endif
+" autocmd BufWinEnter quickfix nnoremap <silent> <buffer>
+"                 \   q :cclose<cr>:lclose<cr>
+"     autocmd BufEnter * if (winnr('$') == 1 && &buftype ==# 'quickfix' ) |
+"                 \   bd|
+"                 \   q | endif
 
 """""""""""""""""""""""""}
 
@@ -329,6 +358,7 @@ function! NewlineEnter()
 endfunction
 
 nnoremap <CR> :call NewlineEnter()<CR>
+nmap <S-Enter> O
 
 " My NerdTree shortcut
 map <C-n> :NERDTreeToggle<CR>

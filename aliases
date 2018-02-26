@@ -3,3 +3,5 @@ alias ll="ls -al"
 alias c="clear"
 alias ..="cd .."
 alias weather='curl -4 wttr.in/bangalore'
+# Current bitcoin value
+alias bitcoin='curl -s https://api.cryptowat.ch/markets/summaries | jq ".result.\"bitfinex:btcusd\".price.last"'
