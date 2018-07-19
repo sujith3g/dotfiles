@@ -46,6 +46,8 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'vim-scripts/matchit.zip', { 'for': 'html' }
 " Git wraper for vim
 Plug 'tpope/vim-fugitive'
+" Hub for fugitive, for Github support
+Plug 'tpope/vim-rhubarb'
 " Plugin shows git diff
 Plug 'airblade/vim-gitgutter'
 " For surrounding text with "",'',{},(),etc.
@@ -239,6 +241,32 @@ let g:ale_open_list = 'on_save'
 
 nmap gD :ALEGoToDefinition<CR>
 
+" set filtype for tsx
+augroup FiletypeGroup
+    autocmd!
+    au BufNewFile,BufRead *.tsx set filetype=typescript.tsx
+augroup END
+
+" disable eslint from typescript files
+" enable stylelint for jsx,tsx
+let g:ale_linters = {
+      \ 'typescript': ['tslint'],
+      \ 'jsx': ['stylelint', 'eslint'],
+      \ 'tsx': ['stylelint', 'tslint'],
+      \}
+
+let g:ale_linter_aliases = {
+      \ 'jsx': 'css',
+      \ 'tsx': 'css',
+      \}
+
+let g:ale_fixers = {
+\   'json': ['jq'],
+\   'javascript': ['eslint'],
+\   'typescript': ['tslint'],
+\   'sql': ['sql-formatter-cli'],
+\}
+
 augroup CloseLoclistWindowGroup
     autocmd!
     autocmd QuitPre * if empty(&buftype) | lclose | endif
@@ -302,7 +330,7 @@ vnoremap < <gv
 vnoremap > >gv
 
 " For folding
-"set foldmethod=indent
+" set foldmethod=syntax
 
 "Indentation for WebDevelopment
 autocmd FileType javascript,html,css,php set ai
@@ -320,6 +348,7 @@ au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 autocmd FileType markdown set ai formatoptions=tcroqn2 comments=n:>
 " for replacing abbreviations in markdown files
 autocmd FileType markdown source ~/.vim_abbreviations
+autocmd Filetype markdown setlocal textwidth=72
 " Open NERDTree if no file argument provided
 autocmd vimenter * if !argc() | NERDTree | endif
 " Allow us to use Ctrl-s and Ctrl-q as keybinds
@@ -347,7 +376,8 @@ endfunction
 """""""""""""""""""""""""""""""""""""""
 " space open/closes folds
 autocmd FileType markdown nnoremap <space> za
-autocmd FileType javascript nnoremap <space> za
+autocmd FileType javascript nnoremap <space> zf%
+autocmd FileType json nnoremap <space> za
 " <Enter> for newline without entering insert-mode, except on quickfix buffer
 function! NewlineEnter()
   if &buftype ==# 'quickfix'
@@ -372,11 +402,17 @@ nnoremap <leader>u2 :call UnderlineHeading(2)<CR>
 nnoremap <leader>u3 :call UnderlineHeading(3)<CR>
 
 " for html,js,css beautify
-autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
+autocmd FileType javascript noremap <buffer>  <c-f> :ALEFix<cr>
 " for html
-autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
-" for css or scss
-autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
+autocmd FileType html noremap <buffer> <c-f> :ALEFix<cr>
+" for css or css
+autocmd FileType css noremap <buffer> <c-f> :ALEFix<cr>
+" for css or json
+autocmd FileType json noremap <buffer> <c-f> :ALEFix<cr>
+autocmd FileType typescript noremap <buffer>  <c-f> :ALEFix<cr>
+" for SQL
+autocmd FileType sql noremap <buffer> <c-f> :%!sql-formatter-cli<cr>
+" autocmd FileType sql noremap <buffer> <c-f> :ALEFix<cr>
 
 " for toggling spell checking
 nmap <silent><leader>s :set spell!<CR>

@@ -119,6 +119,9 @@ fi
 ## for zsh-comletions ######
 fpath=(/usr/local/share/zsh-completions $fpath)
 
+if [ -f ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
+  source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
 
 export PATH="$HOME/.yarn/bin:$PATH"
 eval "$(thefuck --alias)"
@@ -128,3 +131,8 @@ autoload bashcompinit && bashcompinit
 source '/Users/sujith/lib/azure-cli/az.completion'
 export GPG_TTY=$(tty)
 export HISTCONTROL=ignorespace
+
+function prev() {
+  PREV=$(fc -lrn | head -n 1)
+  sh -c "pet new `printf %q "$PREV"`"
+}
