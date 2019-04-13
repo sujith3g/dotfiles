@@ -131,6 +131,7 @@ autoload bashcompinit && bashcompinit
 source '/Users/sujith/lib/azure-cli/az.completion'
 export GPG_TTY=$(tty)
 export HISTCONTROL=ignorespace
+export EDITOR='nvim'
 
 function prev() {
   PREV=$(fc -lrn | head -n 1)

@@ -108,6 +108,8 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'floobits/floobits-neovim'
 " For Ale linter
 Plug 'w0rp/ale'
+" VimGame Code break
+Plug 'johngrib/vim-game-code-break'
 
 " All of your Plugins must be added before the following line
 call plug#end()            " required
@@ -136,6 +138,7 @@ set scrolloff=7
 "For hiding modified buffers without warning message
 set hidden
 "To disable log from javascript-indent, ~/.vim/indent/javascript.vim
+set inccommand=nosplit  " Shows the effects of a sub command incrementally as you type.
 let g:js_indent_log = 0
 
 " Set Leader key as comma
