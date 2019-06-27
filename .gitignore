@@ -10,3 +10,5 @@ nvim/bundle/*
 nvim/autoload
 
 vim/.netrwhist
+vim/pack/
+nvim/pack/

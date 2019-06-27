@@ -5,7 +5,8 @@ if !filereadable(expand("~/.config/nvim/autoload/plug.vim", 1))
       \ .' https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 endif
 " Program to use for evaluating python code
-"" let g:python_host_prog  = '/usr/local/bin/python'
+let g:python3_host_prog  = '/usr/local/bin/python3'
+let g:deoplete#enable_at_startup = 1
 
 " switch cursor to line when in insert mode, and block when not
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
@@ -54,10 +55,22 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-surround'
 " For fuzzy search using CtrlP
 Plug 'kien/ctrlp.vim'
-" YouCompleteMe for autocompletion
-Plug 'Valloric/YouCompleteMe'
+" for autocompletion
+" Plug 'Valloric/YouCompleteMe'
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 " tern for JS support in YouCompleteMe
-Plug 'marijnh/tern_for_vim', { 'for': 'js' }
+" Plug 'marijnh/tern_for_vim', { 'for': 'js' }
 " vim-orgmode - Text outlining and task management for Vim
 Plug 'jceb/vim-orgmode', { 'for': 'org'}
 " vimwiki for - A PERSONAL WIKI FOR VIM
@@ -245,10 +258,10 @@ let g:ale_open_list = 'on_save'
 nmap gD :ALEGoToDefinition<CR>
 
 " set filtype for tsx
-augroup FiletypeGroup
-    autocmd!
-    au BufNewFile,BufRead *.tsx set filetype=typescript.tsx
-augroup END
+" augroup FiletypeGroup
+"     autocmd!
+"     au BufNewFile,BufRead *.tsx set filetype=typescript.tsx
+" augroup END
 
 " disable eslint from typescript files
 " enable stylelint for jsx,tsx
