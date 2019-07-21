@@ -1,0 +1,36 @@
+{
+  "segments": {
+    "right": [
+      {
+        "function": "powerline.segments.common.players.cmus",
+        "name": "player"
+      },
+      {
+        "function": "powerline.segments.common.net.network_load",
+        "args": {
+          "interface" : "en0",
+          "sent_format":" UL {value:>8}",
+          "recv_format":"DL {value:>8}"
+        },
+        "priority": 50
+      },
+      {
+        "function": "powerline.segments.common.time.date"
+      },
+      {
+        "function": "powerline.segments.common.time.date",
+        "name": "time",
+        "args": {
+          "format": "%I:%M %p",
+          "istime": true
+        }
+      },
+      {
+        "function": "powerline.segments.common.bat.battery",
+        "args":{
+          "gamify": true
+        }
+      }
+    ]
+  }
+}
