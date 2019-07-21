@@ -9,7 +9,8 @@
 
 current_dir=$(pwd)                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files="nvimrc vim vim_abbreviations gitignore gitmessage gitconfig aliases tmux.conf tmux zshrc bash_profile"    # list of files/folders to symlink in homedir
+dirs_to_home="nvimrc vim vim_abbreviations gitignore gitmessage gitconfig aliases tmux.conf tmux zshrc bash_profile"    # list of files/folders to symlink in homedir
+dirs_to_config="nvim powerline"
 
 ##########
 
@@ -27,15 +28,18 @@ cd $current_dir
 echo "...done"
 
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks
-for file in $files; do
+for file in $dirs_to_home; do
     echo "Moving any existing dotfiles from ~ to $olddir"
     mv ~/.$file $olddir/$file
     echo "Creating symlink to $file in home directory."
     ln -s $current_dir/$file ~/.$file
 done
-### Install neovim
+### Install ~/.config
 mkdir -p ~/.config
-echo "Moving any existing dotfiles from ~ to $olddir"
-mv ~/.config/nvim $olddir/nvim
-ln -s $current_dir/nvim ~/.config/nvim
+mkdir -p $olddir/.config
+for dir in $dirs_to_config; do
+  echo "Moving any existing dotfiles from ~/.config to $olddir/.config"
+  mv ~/.config/$dir $olddir/.config/$dir
+  ln -s $current_dir/$dir ~/.config/$dir
+done
 ### End-of Install neovim
