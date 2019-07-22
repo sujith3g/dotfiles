@@ -72,7 +72,11 @@ export PATH="/usr/local/go/bin:$PATH"
 export PATH="$HOME/.node/bin:$PATH"
 export PATH="$PATH:/Users/sujith/coding/android/sdk/android-sdk-macosx/platform-tools"
 export PATH="$PATH:/Users/sujith/coding/android/sdk/android-sdk-macosx/tools"
+# for LaTeX
 export PATH="/usr/local/mysql/bin:$PATH"
+export PATH="/Library/TeX/texbin:$PATH"
+
+
 
 #append sensitive info from ~/.sensitive
 if [ -f ~/.sensitive ]; then
@@ -128,7 +132,9 @@ eval "$(thefuck --alias)"
 ## for Azure-cli
 export PATH="$PATH:/Users/sujith/bin"
 autoload bashcompinit && bashcompinit
-source '/Users/sujith/lib/azure-cli/az.completion'
+if [ -f /Users/sujith/lib/azure-cli/az.completion ]; then
+  source '/Users/sujith/lib/azure-cli/az.completion'
+fi
 export GPG_TTY=$(tty)
 export HISTCONTROL=ignorespace
 export EDITOR='nvim'
