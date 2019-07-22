@@ -1,9 +1,12 @@
 # dotfiles
-My config files.
+My config files for the iTerm2 + tmux + zsh + NeoVim setup.
+
+<img width="1280" alt="Screenshot 2019-07-22 at 10 51 24 AM" src="https://user-images.githubusercontent.com/1298779/61608089-18447e00-ac6f-11e9-9dab-df4c14b5c65a.png">
+
 
 ### Installation
 
-TODO
+- `./makesymlinks.sh`
 
 ### Dependencies
 
