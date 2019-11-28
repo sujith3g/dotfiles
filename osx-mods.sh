@@ -3,7 +3,7 @@
 # Scripts for modify default configs of OSX
 
 echo "Set desktop wallpaper";
-osascript -e 'tell application "Finder" to set desktop picture to POSIX file "/Library/Desktop Pictures/Mt. Fuji.jpg"';
+osascript -e 'tell application "Finder" to set desktop picture to POSIX file "/Library/Desktop Pictures/Desert 2.jpg"';
 
 echo "Show hidden files in the finder";
 defaults write com.apple.finder AppleShowAllFiles YES
