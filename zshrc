@@ -84,15 +84,25 @@ if [ -f ~/.sensitive ]; then
 fi
 
 
+# You may need to manually set your language environment
+ export LC_ALL=en_US.UTF-8
+ export LANG=en_US.UTF-8
+
+
 #for android
 export USE_GLOBAL_ADK=t
 export ANDROID_HOME="/Users/sujith/coding/android/sdk/android-sdk-macosx/"
 
 export POWERLINE_CONFIG_COMMAND=powerline-config
+#export PATH="$PATH:$HOME/Library/Python/2.7/bin"
 
-# You may need to manually set your language environment
- export LC_ALL=en_US.UTF-8
- export LANG=en_US.UTF-8
+# for powerline
+if [ -f `which powerline-config` ]; then
+  powerline-daemon -q
+  POWERLINE_BASH_CONTINUATION=1
+  POWERLINE_BASH_SELECT=1
+  . /usr/local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
+fi
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -132,8 +142,9 @@ eval "$(thefuck --alias)"
 ## for Azure-cli
 export PATH="$PATH:/Users/sujith/bin"
 autoload bashcompinit && bashcompinit
-if [ -f /Users/sujith/lib/azure-cli/az.completion ]; then
-  source '/Users/sujith/lib/azure-cli/az.completion'
+
+if [ -f ~/lib/azure-cli/az.completion ]; then
+  source ~/lib/azure-cli/az.completion
 fi
 export GPG_TTY=$(tty)
 export HISTCONTROL=ignorespace
@@ -143,3 +154,7 @@ function prev() {
   PREV=$(fc -lrn | head -n 1)
   sh -c "pet new `printf %q "$PREV"`"
 }
+export PATH="/usr/local/opt/mysql-client/bin:$PATH"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

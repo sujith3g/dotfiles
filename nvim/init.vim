@@ -56,21 +56,21 @@ Plug 'tpope/vim-surround'
 " For fuzzy search using CtrlP
 Plug 'kien/ctrlp.vim'
 " for autocompletion
-" Plug 'Valloric/YouCompleteMe'
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-let g:deoplete#enable_at_startup = 1
+Plug 'Valloric/YouCompleteMe'
+" if has('nvim')
+"   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" else
+"   Plug 'Shougo/deoplete.nvim'
+"   Plug 'roxma/nvim-yarp'
+"   Plug 'roxma/vim-hug-neovim-rpc'
+" endif
+" let g:deoplete#enable_at_startup = 1
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 Plug 'HerringtonDarkholme/yats.vim'
-Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+" Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 " tern for JS support in YouCompleteMe
-" Plug 'marijnh/tern_for_vim', { 'for': 'js' }
+Plug 'marijnh/tern_for_vim', { 'for': 'js' }
 " vim-orgmode - Text outlining and task management for Vim
 Plug 'jceb/vim-orgmode', { 'for': 'org'}
 " vimwiki for - A PERSONAL WIKI FOR VIM
@@ -123,6 +123,8 @@ Plug 'floobits/floobits-neovim'
 Plug 'w0rp/ale'
 " VimGame Code break
 Plug 'johngrib/vim-game-code-break'
+" for editing encrypted/gpg files
+Plug 'robertkrimen/vim-gnupg'
 
 " All of your Plugins must be added before the following line
 call plug#end()            " required
@@ -158,6 +160,9 @@ let g:js_indent_log = 0
 let mapleader = ","
 " Set LocalLeader key as ';'
 let maplocalleader = " "
+
+" for vim-gnupg
+let g:GPGPrimeAgent = 1
 
 "{""""""""""""""""""""""""""
 "    Airline configs    "

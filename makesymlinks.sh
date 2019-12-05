@@ -9,7 +9,7 @@
 
 current_dir=$(pwd)                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-dirs_to_home="nvimrc vim vim_abbreviations gitignore gitmessage gitconfig aliases tmux.conf tmux zshrc bash_profile"    # list of files/folders to symlink in homedir
+dirs_to_home="nvimrc vim vim_abbreviations gitignore gitmessage gitconfig aliases tmux.conf zshrc bash_profile"    # list of files/folders to symlink in homedir
 dirs_to_config="nvim powerline"
 
 ##########
@@ -30,7 +30,9 @@ echo "...done"
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks
 for file in $dirs_to_home; do
     echo "Moving any existing dotfiles from ~ to $olddir"
-    mv ~/.$file $olddir/$file
+    if [ -f ~/.$file ]; then
+	    mv ~/.$file $olddir/$file
+    fi
     echo "Creating symlink to $file in home directory."
     ln -s $current_dir/$file ~/.$file
 done
@@ -39,7 +41,16 @@ mkdir -p ~/.config
 mkdir -p $olddir/.config
 for dir in $dirs_to_config; do
   echo "Moving any existing dotfiles from ~/.config to $olddir/.config"
-  mv ~/.config/$dir $olddir/.config/$dir
+  if [ -f ~/.$file ]; then
+	  mv ~/.config/$dir $olddir/.config/$dir
+  fi
   ln -s $current_dir/$dir ~/.config/$dir
 done
 ### End-of Install neovim
+
+
+### setup tmux tpm
+if [ ! -d ~/.tmux/plugins/tpm ]; then
+  mkdir -p ~/.tmux/plugins/tpm
+fi
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
