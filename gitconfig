@@ -4,9 +4,11 @@
 [user]
   name = Sujith G
   email = sujith3g@gmail.com
-  signingkey = 2E65E75F058004D1
+  signingkey = C4645ECCAF6D287F
 [push]
   default = simple
+[pull]
+  rebase = true
 [filter "lfs"]
   clean = git-lfs clean %f
   smudge = git-lfs smudge %f
@@ -32,3 +34,5 @@
 	last = log -1 HEAD
 [url "git@github.com:"]
 	insteadOf = https://github.com/
+[init]
+	defaultBranch = main

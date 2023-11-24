@@ -97,12 +97,17 @@ export POWERLINE_CONFIG_COMMAND=powerline-config
 #export PATH="$PATH:$HOME/Library/Python/2.7/bin"
 
 # for powerline
-if [ -f `which powerline-config` ]; then
+# if [ -f `which powerline-config` ]; then
+if type powerline -h &> /dev/null; then
   powerline-daemon -q
   POWERLINE_BASH_CONTINUATION=1
   POWERLINE_BASH_SELECT=1
   . /usr/local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
 fi
+
+# use GPG subkey for ssh
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+gpgconf --launch gpg-agent
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -137,7 +142,7 @@ if [ -f ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
   source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
 
-export PATH="$HOME/.yarn/bin:$PATH"
+# export PATH="$HOME/.yarn/bin:$PATH"
 eval "$(thefuck --alias)"
 ## for Azure-cli
 export PATH="$PATH:/Users/sujith/bin"
@@ -158,3 +163,8 @@ export PATH="/usr/local/opt/mysql-client/bin:$PATH"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+if type rg &> /dev/null; then
+  export FZF_DEFAULT_COMMAND='rg --files'
+  export FZF_DEFAULT_OPTS='-m --height 50% --border'
+fi

@@ -28,7 +28,7 @@
 			"colorscheme": "solarized",
 			"theme": "default"
 		},
-		"vim": {
+		"--vim--": {
 			"colorscheme": "default",
 			"theme": "default",
 			"local_themes": {
